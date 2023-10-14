@@ -2,12 +2,15 @@ package main
 
 import "fmt"
 
-const englishHelloPrefix = "Hello"
+const englishHello = "Hello"
 
 func Hello(name string) string {
-	return fmt.Sprintf("%s, %s", englishHelloPrefix, name)
+	if name == "" {
+		name = "World"
+	}
+	return fmt.Sprintf("%s, %s", englishHello, name)
 }
 
 func main() {
-	fmt.Println(Hello("world"))
+	fmt.Println(Hello(""))
 }
