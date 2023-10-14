@@ -1,8 +1,12 @@
 package iteration
 
-func Repeat(s string) (repeated string) {
-	for i := 0; i < 5; i++ {
-		repeated += s
+import "strings"
+
+func Repeat(s string, l int) string {
+	var builder []string
+	for i := 0; i < l; i++ {
+		builder = append(builder, s)
 	}
-	return
+
+	return strings.Join(builder, "")
 }
