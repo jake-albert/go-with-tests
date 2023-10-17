@@ -1,6 +1,9 @@
 package wallet
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Bitcoin int
 
@@ -13,9 +16,16 @@ type Wallet struct {
 }
 
 func (w *Wallet) Deposit(amount Bitcoin) {
-	// confirm that wallet is passed by address and not copied
-	// fmt.Printf("address of balance in test is %v \n", &(w.balance))
 	w.balance += amount
+}
+
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	if w.balance < amount {
+		return errors.New("bad")
+	}
+
+	w.balance -= amount
+	return nil
 }
 
 func (w *Wallet) Balance() Bitcoin {
