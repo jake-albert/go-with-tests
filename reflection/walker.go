@@ -4,6 +4,9 @@ import "reflect"
 
 func walk(x interface{}, f func(input string)) {
 	val := reflect.ValueOf(x)
-	field := val.Field(0)
-	f(field.String())
+
+	for i := 0; i < val.NumField(); i++ {
+		field := val.Field(i)
+		f(field.String())
+	}
 }
